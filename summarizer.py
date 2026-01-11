@@ -1,12 +1,8 @@
 from openai import OpenAI
-import os
-from dotenv import load_dotenv
 
-load_dotenv()
-
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
-def summarize_text(transcript):
+def summarize_text(transcript, api_key):
+    client = OpenAI(api_key=api_key)
+    
     prompt = f"""
     Summarize the following YouTube transcript.
 
