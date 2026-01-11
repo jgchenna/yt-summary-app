@@ -4,6 +4,9 @@ emoji: 🐢
 colorFrom: gray
 colorTo: purple
 sdk: docker
+app_port: 8501
+tags : 
+    - streamlit
 pinned: false
 license: apache-2.0
 short_description: video summary app
