@@ -1,10 +1,6 @@
 import os
 import yt_dlp
-from dotenv import load_dotenv
 from openai import OpenAI
-
-load_dotenv()
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def download_audio(video_id):
     url = f"https://www.youtube.com/watch?v={video_id}"
@@ -32,11 +28,12 @@ def download_audio(video_id):
     
     return audio_file
 
-def whisper_transcribe(video_id):
+def whisper_transcribe(video_id, api_key):
     """Download audio and transcribe via OpenAI Speech-to-Text API.
 
     This avoids importing the local `whisper` package which can fail on Windows.
     """
+    client = OpenAI(api_key=api_key)
     audio_file = download_audio(video_id)
     text = ""
     try:

@@ -25,7 +25,7 @@ if st.button("Generate Summary"):
             st.error("Invalid YouTube URL")
         else:
             with st.spinner("Fetching transcript (Whisper fallback may take ~1 minute)..."):
-                    transcript = get_transcript(video_id)
+                    transcript = get_transcript(video_id, api_key)
 
             if not transcript or len(transcript.strip()) < 50:
                 st.error("Unable to extract transcript from this video.")

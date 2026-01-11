@@ -1,10 +1,10 @@
 from youtube_transcript_api import YouTubeTranscriptApi
 from whisper_transcribe import whisper_transcribe
 
-def get_transcript(video_id):
+def get_transcript(video_id, api_key):
     try:
         transcript = YouTubeTranscriptApi.get_transcript(video_id)
         return " ".join([i["text"] for i in transcript])
     except Exception:
         # Fallback to Whisper
-        return whisper_transcribe(video_id)
+        return whisper_transcribe(video_id, api_key)
